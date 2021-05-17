@@ -17,6 +17,14 @@ test_symbol = make_test(t.Symbol("abc"), "abc")
 test_string_empty = make_test(t.String(''), '""')
 test_string = make_test(t.String('abc'), '"abc"')
 test_list_empty = make_test(t.List({}), "()")
+test_vector_empty = make_test(t.Vector({}), "[]")
+test_vector_atom = make_test(
+  t.Vector({
+    t.Number(1),
+    t.Symbol("abc"),
+    t.Boolean(false),
+    t.String('hello world')}),
+  "[1 abc false \"hello world\"]")
 test_list_atom = make_test(
   t.List({
     t.Number(1),
