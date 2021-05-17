@@ -22,6 +22,7 @@ local grammar = {
         + V('splice-unquote')
         + V('symbol')
         + V('list')
+        + V('vector')
         + V('sink'),
 
     escape = S(" \f\n\r\t\v[]{}()'\"`,;"),
@@ -33,6 +34,18 @@ local grammar = {
         / t.List
        * (
             P(')')
+            + function(match)
+                error(t.Error(string.format(
+                    "Missed RPAREN: %s. EOF",
+                    match)))
+            end),
+
+    vector =
+        P('[')
+        * Ct(V("forms")^0)
+        / t.Vector
+       * (
+            P(']')
             + function(match)
                 error(t.Error(string.format(
                     "Missed RPAREN: %s. EOF",

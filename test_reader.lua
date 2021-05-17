@@ -31,6 +31,7 @@ test_string_escape_combo = make_test(
 
 test_number_spaces = make_test("    1    ", t.Number(1))
 test_list_empty_space = make_test("( )", t.List({}))
+test_vector_empty_space = make_test("[ ]", t.Vector({}))
 
 test_list_empty = make_test("()", t.List({}))
 test_list_one = make_test("(1)", t.List({t.Number(1)}))
@@ -50,5 +51,24 @@ test_nested_list = make_test(
         t.List({
             t.Number(2),
             t.List({t.Number(3)})})}))
+
+test_vector_empty = make_test("[]", t.Vector({}))
+test_vector_one = make_test("[1]", t.Vector({t.Number(1)}))
+test_vector_atom = make_test(
+    "[true false 123 nil abc \"hello world\"]",
+    t.Vector({
+        t.Boolean(true),
+        t.Boolean(false),
+        t.Number(123),
+        t.Nil(),
+        t.Symbol("abc"),
+        t.String("hello world")}))
+test_nested_vector = make_test(
+    "[1 [2 [3]]]",
+    t.Vector({
+        t.Number(1),
+        t.Vector({
+            t.Number(2),
+            t.Vector({t.Number(3)})})}))
 
 os.exit(lu.LuaUnit.run())

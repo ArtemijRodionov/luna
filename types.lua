@@ -11,6 +11,7 @@ local kinds = {
     Number = {kind = 'number'},
     Boolean = {kind = 'boolean'},
     List = {kind = 'list'},
+    Vector = {kind = 'vector'},
     String = {kind = 'string'},
     Error = {kind = 'error'},
 }
@@ -29,7 +30,7 @@ end
 function arg1(t)
     return function(x)
         return t({value = x})
-    end 
+    end
 end
 
 return {
@@ -38,6 +39,7 @@ return {
     Number = arg1(types.Number),
     Boolean = arg1(types.Boolean),
     List = arg1(types.List),
+    Vector = arg1(types.Vector),
     String = arg1(types.String),
     Error = arg1(types.Error),
 }
