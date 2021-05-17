@@ -19,6 +19,10 @@ function pr_str(ast)
     return _pr_nested(ast, '[', ']')
   end
 
+  if ast.kind == "hashmap" then
+    return _pr_nested(ast, '{', '}')
+  end
+
   if ast.kind == "string" then
     return string.format('"%s"', ast.value)
   end

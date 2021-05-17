@@ -71,4 +71,6 @@ test_nested_vector = make_test(
             t.Number(2),
             t.Vector({t.Number(3)})})}))
 
+test_hashmap_empty = make_test("{}", t.Hashmap({}))
+
 os.exit(lu.LuaUnit.run())

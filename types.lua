@@ -12,6 +12,7 @@ local kinds = {
     Boolean = {kind = 'boolean'},
     List = {kind = 'list'},
     Vector = {kind = 'vector'},
+    Hashmap = {kind = 'hashmap'},
     String = {kind = 'string'},
     Error = {kind = 'error'},
 }
@@ -40,6 +41,7 @@ return {
     Boolean = arg1(types.Boolean),
     List = arg1(types.List),
     Vector = arg1(types.Vector),
+    Hashmap = arg1(types.Hashmap),
     String = arg1(types.String),
     Error = arg1(types.Error),
 }

@@ -16,7 +16,7 @@ test_false = make_test(t.Boolean(false), "false")
 test_symbol = make_test(t.Symbol("abc"), "abc")
 test_string_empty = make_test(t.String(''), '""')
 test_string = make_test(t.String('abc'), '"abc"')
-test_list_empty = make_test(t.List({}), "()")
+
 test_vector_empty = make_test(t.Vector({}), "[]")
 test_vector_atom = make_test(
   t.Vector({
@@ -25,6 +25,8 @@ test_vector_atom = make_test(
     t.Boolean(false),
     t.String('hello world')}),
   "[1 abc false \"hello world\"]")
+
+test_list_empty = make_test(t.List({}), "()")
 test_list_atom = make_test(
   t.List({
     t.Number(1),
@@ -32,5 +34,7 @@ test_list_atom = make_test(
     t.Boolean(false),
     t.String('hello world')}),
   "(1 abc false \"hello world\")")
+
+test_hashmap = make_test(t.Hashmap({}), "{}")
 
 os.exit(lu.LuaUnit.run())

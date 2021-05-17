@@ -23,6 +23,7 @@ local grammar = {
         + V('symbol')
         + V('list')
         + V('vector')
+        + V('hashmap')
         + V('sink'),
 
     escape = S(" \f\n\r\t\v[]{}()'\"`,;"),
@@ -46,6 +47,18 @@ local grammar = {
         / t.Vector
        * (
             P(']')
+            + function(match)
+                error(t.Error(string.format(
+                    "Missed RPAREN: %s. EOF",
+                    match)))
+            end),
+
+    hashmap =
+        P('{')
+        * Ct(V("forms")^0)
+        / t.Hashmap
+       * (
+            P('}')
             + function(match)
                 error(t.Error(string.format(
                     "Missed RPAREN: %s. EOF",
